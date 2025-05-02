@@ -149,16 +149,19 @@ public class CollegeManager {
         Teacher[] members = c.getTeacherCommitteeArr();
 
         for (int i = 0; i < members.length; i++) {
-            if (members[i].equals(t)) {
-                return false;
-            }
-        }
-        for (int i = 0; i < members.length; i++) {
             if (members[i] == null) {
                 members[i] = t;
                 break;
             }
+            if (members[i].equals(t)) {
+                return false;
+            }
         }
+//        for (int i = 0; i < members.length; i++) {
+//            if (members[i] == null) {
+//                members[i] = t;
+//                break;
+//            }
         return true;
     }
 

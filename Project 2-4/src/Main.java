@@ -63,8 +63,6 @@ public class Main {
 
                     manager.addTeacher(teacherName, id, rank, degreeName, salary, department);
 
-
-
                     System.out.println("Teacher added successfully.");
                     System.out.println("-------------------------------------------------");
 
@@ -124,7 +122,7 @@ public class Main {
                         System.out.println("Teacher already in committee. teacher is not added!");
                     }
 
-                    System.out.println(t.getName() + "successfully added to" + committee2Add2);
+                    System.out.println(t.getName() + " successfully added to " + committee2Add2);
                     System.out.println("-------------------------------------------------");
 
                     break;
@@ -178,8 +176,8 @@ public class Main {
                     System.out.println("Enter ID of teacher to remove from committee: ");
                     String t_ID = scn.nextLine();
 
-                    while (manager.checkIfTeacherExists(t_ID)){
-                        System.out.println("teacher already exists, try again!");
+                    while (!manager.checkIfTeacherExists(t_ID)){
+                        System.out.println("teacher isn't in the committee, try again!");
                         t_ID = scn.nextLine();
                     }
                     Teacher teach = manager.getTeacher(t_ID);
