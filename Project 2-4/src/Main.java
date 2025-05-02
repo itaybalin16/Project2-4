@@ -1,5 +1,4 @@
 import java.util.Scanner;
-//IDAN BARIL
 //Itay Balin
 //Yiska Malka
 public class Main {
