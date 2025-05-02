@@ -27,7 +27,7 @@ public class Teacher {
     public boolean equals(Object o) {
         if (o == null || getClass() != o.getClass()) return false;
         Teacher teachers = (Teacher) o;
-        return id == teachers.id;
+        return id.equals(teachers.id);
     }
 
     @Override
@@ -48,7 +48,7 @@ public class Teacher {
 
 
     public void setSalary(int salary) {
-        salary = salary;
+        this.salary = salary;
     }
 
     public void setDepartment(String department) {

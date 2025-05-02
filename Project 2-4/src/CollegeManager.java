@@ -239,7 +239,7 @@ public class CollegeManager {
 
     public boolean checkTeacherExistsInArr(Teacher[] teacher_comm, Teacher teacher) {
         for (int i = 0; i < teacher_comm.length; i++) {
-            if (teacher_comm[i] != null && teachers[i].equals(teacher)) { //GPT said to replace teacher with teacher_comm - if i have a bug need to revert
+            if (teacher_comm[i] != null && teacher_comm[i].equals(teacher)) { //GPT said to replace teacher with teacher_comm - if i have a bug need to revert
                 return true;
             }
         }

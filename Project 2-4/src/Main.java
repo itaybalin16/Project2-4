@@ -143,6 +143,7 @@ public class Main {
 
                     while(!manager.checkIfCommitteeExist(committee2AddNewChairman)){
                         System.out.println("no such committee! try again :)");
+                        committee2AddNewChairman = scn.nextLine();
                     }
 
                     Committee c2 = manager.getCommittee(committee2AddNewChairman);
@@ -177,7 +178,7 @@ public class Main {
                     String t_ID = scn.nextLine();
 
                     while (!manager.checkIfTeacherExists(t_ID)){
-                        System.out.println("teacher isn't in the committee, try again!");
+                        System.out.println("teacher isn't in the commixttee, try again!");
                         t_ID = scn.nextLine();
                     }
                     Teacher teach = manager.getTeacher(t_ID);
