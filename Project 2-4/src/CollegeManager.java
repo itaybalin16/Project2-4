@@ -5,9 +5,18 @@ public class CollegeManager {
     private int numOfC = 0;
     private Department[] departments = new Department[1];
     private int numOfD = 0;
+    private String collegeName;
 
-    public void addTeacher(String name, String id, AcademicRank degree, String degreeName, int salary, String department) {
-        Teacher t = new Teacher(name, id, degree, degreeName, salary, department);
+    public CollegeManager(String collegeName) {
+        this.collegeName = collegeName;
+    }
+
+    public String getCollegeName() {
+        return collegeName;
+    }
+
+    public void addTeacher(String name, String id, AcademicRank degree, String degreeName, int salary, String department, Committee[] committeesOfTeacher) {
+        Teacher t = new Teacher(name, id, degree, degreeName, salary, department, committeesOfTeacher);
 
         if (numOfT == teachers.length) {
             teachers = extendArrTeachers(teachers);
@@ -263,4 +272,22 @@ public class CollegeManager {
         return true;
     }
 
+    public void addComm2TeacherComms(Teacher t, Committee c) {
+        Committee[] teacherComms = t.getCommitteesOfTeacher();
+        for (int i = 0; i < teacherComms.length; i++) {
+            if (teacherComms[i] == null) {
+                teacherComms[i] = c;
+                break;
+            }
+        }
+    }
+
+    public void removeCommFromTeacherComms(Teacher t, Committee c) {
+        Committee[] teacherComms = t.getCommitteesOfTeacher();
+        for (int i = 0; i < teacherComms.length; i++) {
+            if (teacherComms[i] != null && teacherComms[i].equals(c)) {
+                teacherComms[i] = null;
+            }
+        }
+    }
 }

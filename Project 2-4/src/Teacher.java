@@ -1,3 +1,4 @@
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Teacher {
@@ -8,17 +9,19 @@ public class Teacher {
     private String degreeName;
     private int salary;
     private String department;
+    private Committee[] committeesOfTeacher;
 
-    public Teacher(String teacherFullName, String id, AcademicRank degree, String degreeName, int salary) {
+    public Teacher(String teacherFullName, String id, AcademicRank degree, String degreeName, int salary, Committee[] committeesOfTeacher) {
         this.name = teacherFullName;
         this.id = id;
         this.degree = degree;
         this.degreeName = degreeName;
         this.salary = salary;
+        this.committeesOfTeacher = committeesOfTeacher;
     }
 
-    public Teacher(String teacherFullName, String id, AcademicRank degree, String degreeName, int salary, String department) {
-        this(teacherFullName, id, degree, degreeName, salary);
+    public Teacher(String teacherFullName, String id, AcademicRank degree, String degreeName, int salary, String department, Committee[] committeesOfTeacher) {
+        this(teacherFullName, id, degree, degreeName, salary, committeesOfTeacher);
         this.department = department;
     }
 
@@ -41,10 +44,14 @@ public class Teacher {
                 "Teacher Full Name='" + name + '\'' +
                 ", Degree='" + degree + '\'' +
                 ", Degree Name='" + degreeName + '\'' +
-                ", Department='" + department + '\'';
+                ", Department='" + department + '\''
+                + ", Salary=" + salary;
+//                + ", Committees of Teacher=" + committeesOfTeacher +'\''; how to print?
     }
 
-
+    public Committee[] getCommitteesOfTeacher() {
+        return committeesOfTeacher;
+    }
 
     public void setSalary(int salary) {
         this.salary = salary;

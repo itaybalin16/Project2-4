@@ -5,9 +5,10 @@ public class Main {
     public static void main(String[] args) {
         boolean keepRunning = true;
         Scanner scn = new Scanner(System.in);
-//        System.out.println("Please enter a college name: ");
-//        String collName = scn.nextLine();
-        CollegeManager manager = new CollegeManager();
+        System.out.println("Please enter the name of the college: ");
+        String collegeName = scn.nextLine();
+        CollegeManager manager = new CollegeManager(collegeName);
+        System.out.println("Welcome to " + manager.getCollegeName());
 
         while (keepRunning) {
             menuPrint();
@@ -61,7 +62,8 @@ public class Main {
                         manager.addTeacher2Department(teacher2, department2);
                     }
 
-                    manager.addTeacher(teacherName, id, rank, degreeName, salary, department);
+                    Committee[] committeesOfTeacher = new Committee[10];
+                    manager.addTeacher(teacherName, id, rank, degreeName, salary, department, committeesOfTeacher);
 
                     System.out.println("Teacher added successfully.");
                     System.out.println("-------------------------------------------------");
@@ -83,8 +85,8 @@ public class Main {
                     System.out.println("Enter committee name: ");
                     String committeeName = scn.nextLine(); //בדיקה אם הועדה קיימת
 
-                    if (!manager.checkIfCommitteeExist(committeeName)) {
-                        System.out.println("Committee doesn't exist, try again!");
+                    if (manager.checkIfCommitteeExist(committeeName)) {
+                        System.out.println("Committee already exist, try again!");
                         break;
                     }
 
@@ -130,6 +132,8 @@ public class Main {
                         System.out.println(t.getName() + " already in " + c + ". is not added!");
                         break;
                     }
+
+                    manager.addComm2TeacherComms(t, c);
 
                     System.out.println(t.getName() + " successfully added to " + committee2Add2);
                     System.out.println("-------------------------------------------------");
@@ -196,6 +200,9 @@ public class Main {
                         System.out.println("Teachers isn't in the committee! didn't remove :)");
                         break;
                     }
+
+                    manager.removeCommFromTeacherComms(teach, comm);
+
                     System.out.println(teach.getName() + " successfully removed from " + t_ID);
                     System.out.println("-------------------------------------------------");
 
