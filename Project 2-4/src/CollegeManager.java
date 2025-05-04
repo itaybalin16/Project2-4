@@ -102,9 +102,9 @@ public class CollegeManager {
         return false;
     }
 
-    public boolean checkIfCommitteeExist(String depName) {
+    public boolean checkIfCommitteeExist(String committeeName) {
         for (int i = 0; i < numOfC; i++) {
-            if (depName.equals(committees[i].getCommitteeName())) {
+            if (committeeName.equals(committees[i].getCommitteeName())) {
                 return true;
             }
         }
@@ -167,11 +167,6 @@ public class CollegeManager {
                 return false;
             }
         }
-//        for (int i = 0; i < members.length; i++) {
-//            if (members[i] == null) {
-//                members[i] = t;
-//                break;
-//            }
         return true;
     }
 

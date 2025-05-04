@@ -130,14 +130,11 @@ public class Main {
 
                     if (!manager.addTeacher2Committee(t, c)){
                         System.out.println(t.getName() + " already in " + c + ". is not added!");
-                        break;
+                    } else{
+                        manager.addComm2TeacherComms(t, c);
+                        System.out.println(t.getName() + " successfully added to " + committee2Add2);
                     }
-
-                    manager.addComm2TeacherComms(t, c);
-
-                    System.out.println(t.getName() + " successfully added to " + committee2Add2);
                     System.out.println("-------------------------------------------------");
-
                     break;
 
                 case 4:
@@ -295,12 +292,11 @@ public class Main {
 
                     if (!manager.addTeacher2Department(teacher,d)){
                         System.out.println("Teacher already in department. teacher is not added!");
-                        break;
-                    }
+                    } else {System.out.println(teacher.getName() + " successfully added to " +  department2Add2);}
 
-                    System.out.println(teacher.getName() + " successfully added to " +  department2Add2);
                     System.out.println("-------------------------------------------------");
                     break;
+
                 default:
                     System.out.println("Wrong choice! try again :)");
                     System.out.println("-------------------------------------------------");
