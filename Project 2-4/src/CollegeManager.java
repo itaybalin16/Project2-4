@@ -153,6 +153,7 @@ public class CollegeManager {
                 members[i] = t;
                 break;
             }
+
             if (members[i].equals(t)) {
                 return false;
             }
@@ -222,7 +223,7 @@ public class CollegeManager {
     public void getTeachersDetails() {
         for (int i = 0; i < teachers.length; i++) {
             if (teachers[i] != null) {
-                System.out.println(teachers[i]);
+                System.out.println(teachers[i].toString());
             }
         }
         System.out.println();
@@ -231,7 +232,7 @@ public class CollegeManager {
     public void showCommittee() {
         for (int i = 0; i < committees.length; i++) {
             if (committees[i] != null) {
-                System.out.println(committees[i]);
+                System.out.println(committees[i].toString());
             }
         }
         System.out.println();

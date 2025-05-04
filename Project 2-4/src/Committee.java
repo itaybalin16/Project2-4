@@ -10,6 +10,7 @@ public class Committee {
     public Committee(Teacher chairman, String committeeName, Teacher[] teacherCommitteeArr) {
         this.committeeName = committeeName;
         this.teacherCommitteeArr = teacherCommitteeArr;
+        this.chairman = chairman;
     }
 
 
@@ -51,11 +52,10 @@ public class Committee {
 
     @Override
     public String toString() {
-        return "Committee{" +
-                "chairmanName='" + chairman + '\'' +
-                ", committeeName='" + committeeName + '\'' +
-                ", teacherCommitteeArr=" + Arrays.toString(teacherCommitteeArr) +
-                '}';
+        return "Committees = " +
+                "Chairman Name='" + chairman + '\'' +
+                ", CommitteeName='" + committeeName + '\'' +
+                ", Teacher Committee Arr=" + Arrays.toString(teacherCommitteeArr);
     }
 
 }

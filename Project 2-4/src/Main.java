@@ -24,9 +24,9 @@ public class Main {
                     System.out.println("Enter ID:");
                     String id = scn.nextLine();
 
-                    while (manager.checkIfTeacherExists(id)){
+                    if (manager.checkIfTeacherExists(id)) {
                         System.out.println("teacher already exists, try again!");
-                        id = scn.nextLine();
+                        break;
                     }
 
                     System.out.println("Enter teacher's full name:");
@@ -51,9 +51,9 @@ public class Main {
                     String department = scn.nextLine();
 
                     if (!department.equals("none")) {
-                        while(!manager.checkIfDepartmentExist(department)) {
-                            System.out.println("department doesn't exists, try again!");
-                            department = scn.nextLine();
+                        if (!manager.checkIfDepartmentExist(department)) {
+                            System.out.println("department doesn't exist, try again!");
+                            break;
                         }
                         Department department2 = manager.getDepartment(department);
                         Teacher teacher2 = manager.getTeacher(id);
@@ -83,6 +83,11 @@ public class Main {
                     System.out.println("Enter committee name: ");
                     String committeeName = scn.nextLine(); //בדיקה אם הועדה קיימת
 
+                    if (!manager.checkIfCommitteeExist(committeeName)) {
+                        System.out.println("Committee doesn't exist, try again!");
+                        break;
+                    }
+
                     System.out.println("Enter number of teachers in committee: ");
                     int numOfTeachersC = scn.nextInt();
                     System.out.println();
@@ -101,31 +106,36 @@ public class Main {
                     System.out.println("-------------------------------------------------");
                     System.out.println("Enter ID of teacher to add to committee: ");
                     String teacherID2Add = scn.nextLine();
-
-                    while (!manager.checkIfTeacherExists(teacherID2Add)){
-                        System.out.println("teacher doesn't exists! try again:)");
-                        teacherID2Add = scn.nextLine();
+                    if (!manager.checkIfTeacherExists(teacherID2Add)) {
+                        System.out.println("teacher doesn't exist! try again :)");
+                        break;
                     }
-
                     Teacher t = manager.getTeacher(teacherID2Add);
 
                     System.out.println("Enter the committee name: ");
                     String committee2Add2 = scn.nextLine();
-                    while(!manager.checkIfCommitteeExist(committee2Add2)){
-                        System.out.println("committee doesn't exists! try again :)");
-                        committee2Add2 = scn.nextLine();
+                    if (!manager.checkIfCommitteeExist(committee2Add2)) {
+                        System.out.println("committee doesn't exist! try again :)");
+                        break;
                     }
-
                     Committee c = manager.getCommittee(committee2Add2);
 
+                    Teacher chairmanCheck = c.getChairman();
+                    if (chairmanCheck.equals(t)) {
+                        System.out.println(t.getName() + " is the chairman, can't be added to " + committee2Add2 + ". try again!");
+                        break;
+                    }
+
                     if (!manager.addTeacher2Committee(t, c)){
-                        System.out.println("Teacher already in committee. teacher is not added!");
+                        System.out.println(t.getName() + " already in " + c + ". is not added!");
+                        break;
                     }
 
                     System.out.println(t.getName() + " successfully added to " + committee2Add2);
                     System.out.println("-------------------------------------------------");
 
                     break;
+
                 case 4:
                     System.out.println("You choose 4 - updating the chairman");
                     System.out.println("-------------------------------------------------");
@@ -141,15 +151,14 @@ public class Main {
                     System.out.println("Enter committee that's needs a new chairman: ");
                     String committee2AddNewChairman = scn.nextLine();
 
-                    while(!manager.checkIfCommitteeExist(committee2AddNewChairman)){
+                    if (!manager.checkIfCommitteeExist(committee2AddNewChairman)) {
                         System.out.println("no such committee! try again :)");
-                        committee2AddNewChairman = scn.nextLine();
+                        break;
                     }
 
                     Committee c2 = manager.getCommittee(committee2AddNewChairman);
                     Teacher[] teachersInCommittee = c2.getTeacherCommitteeArr();
 
-                    //צריך להעיף את היו"ר החדש אם הוא כבר מרצה במערך המרצים של הועדה
                     if (manager.checkTeacherExistsInArr(teachersInCommittee, newChairman)){
                         manager.removeMemberFromArr(newChairman, teachersInCommittee);
                     }
@@ -165,28 +174,29 @@ public class Main {
                     System.out.println("-------------------------------------------------");
                     System.out.println("Enter the name of committee to remove a member from");
                     String c_Name = scn.nextLine();
-                    while(!manager.checkIfCommitteeExist(c_Name)){
+                    if (!manager.checkIfCommitteeExist(c_Name)) {
                         System.out.println("No such committee! try again :)");
-                        c_Name= scn.nextLine();
+                        break;
                     }
+
                     Committee comm = manager.getCommittee(c_Name);
 
-//                    if (committee != null) {
                     Teacher[] teachers_committee = comm.getTeacherCommitteeArr();
 
                     System.out.println("Enter ID of teacher to remove from committee: ");
                     String t_ID = scn.nextLine();
 
-                    while (!manager.checkIfTeacherExists(t_ID)){
-                        System.out.println("teacher isn't in the commixttee, try again!");
-                        t_ID = scn.nextLine();
+                    if (!manager.checkIfTeacherExists(t_ID)) {
+                        System.out.println("teacher isn't in the committee, try again!");
+                        break;
                     }
                     Teacher teach = manager.getTeacher(t_ID);
 
                     if (!manager.removeMemberFromArr(teach, teachers_committee)){
-                        System.out.println("Teachers isn't in the committee! didn't remove");
+                        System.out.println("Teachers isn't in the committee! didn't remove :)");
+                        break;
                     }
-                    System.out.println(teach.getName() + "successfully removed from " + t_ID);
+                    System.out.println(teach.getName() + " successfully removed from " + t_ID);
                     System.out.println("-------------------------------------------------");
 
                     break;
@@ -197,9 +207,9 @@ public class Main {
                     System.out.println("Enter department name:");
                     String departmentName = scn.nextLine();
 
-                    while(manager.checkIfDepartmentExist(departmentName)){
+                    if (manager.checkIfDepartmentExist(departmentName)) {
                         System.out.println("department already exists, try again!");
-                        departmentName = scn.nextLine();
+                        break;
                     }
 
                     System.out.println("Enter number of students:");
@@ -230,9 +240,9 @@ public class Main {
                     System.out.println("Enter name of department: ");
                     String depName= scn.nextLine();
 
-                    while(!manager.checkIfDepartmentExist(depName)){
+                    if (!manager.checkIfDepartmentExist(depName)) {
                         System.out.println("No such Department! try again :)");
-                        depName= scn.nextLine();
+                        break;
                     }
 
                     Department depart = manager.getDepartment(depName);
@@ -260,9 +270,9 @@ public class Main {
                     System.out.println("Enter ID of teacher to add to department: ");
                     String teacherID = scn.nextLine();
 
-                    while (!manager.checkIfTeacherExists(teacherID)){
-                        System.out.println("teacher doesn't exists! try again:)");
-                        teacherID = scn.nextLine();
+                    if (!manager.checkIfTeacherExists(teacherID)) {
+                        System.out.println("teacher doesn't exist! try again :)");
+                        break;
                     }
 
                     Teacher teacher = manager.getTeacher(teacherID);
