@@ -283,9 +283,8 @@ public class Main {
 
                     System.out.println("Enter the department name: ");
                     String department2Add2 = scn.nextLine();
-                    while(!manager.checkIfDepartmentExist(department2Add2)){
+                    if(!manager.checkIfDepartmentExist(department2Add2)){
                         System.out.println("department doesn't exists! try again :)");
-                        department2Add2= scn.nextLine();
                     }
 
                     Department d = manager.getDepartment(department2Add2);

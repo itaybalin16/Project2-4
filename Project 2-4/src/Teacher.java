@@ -45,8 +45,8 @@ public class Teacher {
                 ", Degree='" + degree + '\'' +
                 ", Degree Name='" + degreeName + '\'' +
                 ", Department='" + department + '\''
-                + ", Salary=" + salary;
-//                + ", Committees of Teacher=" + committeesOfTeacher +'\''; how to print?
+                + ", Salary=" + salary
+                + ", Committees=" + Arrays.toString(committeesOfTeacher);
     }
 
     public Committee[] getCommitteesOfTeacher() {
